@@ -1,7 +1,4 @@
-/.web-server-pid
-/app/config/parameters.yml
-/build/
-/phpunit.xml
+/.idea/
 /var/*
 !/var/cache
 /var/cache/*
@@ -13,5 +10,4 @@
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/vendor/
-/web/bundles/
+
