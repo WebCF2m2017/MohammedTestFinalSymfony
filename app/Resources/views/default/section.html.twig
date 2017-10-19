@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
+
+
 {% block body %}
-    {% if is_granted('ROLE_ADMIN') %}
-    {% for article in articles %}
-        <ul>
-            <li><a href="{{ path('admin_article_show', { 'id': article.id }) }}">{{ article.titre }}</a></li>
-        </ul>
-    {% endfor %}
-    {% endif %}
-{% for section in sections %}
-        <ul>
-            <li><a href="{{ path('admin_section_show',{ 'id': section.id }) }}">{{ section.titre }}</a></li>
-        </ul>
-{% endfor %}
+    {% block menu %}
+        {% for s in sections %}
+            <a href="{{ path("sections",{ 'id': s.id }) }}">{{ s.titre }}</a> -
+        {% endfor %}<hr/>
     {% endblock %}
+    <h1>{{ titre }}</h1>
+    {% for a in articles %}
+        <hr/>
+        <h2>{{ a.titre }}</h2>
+        <hr/>
+        <h4>
+        <p>{{ a.texte }}</p>
+        <p>{{ a.temps|date("Y-m-d H:i:s") }} </p>
+    {% endfor %}
+{% endblock %}
