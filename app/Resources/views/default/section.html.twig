@@ -1,19 +1,40 @@
+
 {% extends 'base.html.twig' %}
+            {% block body %}
 
+                <div class="container">
+                <header class="row col-md-12">
+                    <div class="page-header">
+                        <h1>Mon site<img src="images/papillon.png" class="pull-right"></h1>
+                    </div>
+                </header>
+            {% block menu %}
+                {% for s in sections %}
+                <div class="row col-md-12">
+                <nav class="col-md-4">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">  <a href="{{ path("sections",{ 'id': s.id }) }}"><span class="glyphicon glyphicon-home"></span>{{ s.titre }}</a></li>
+                    </ul>
+                </nav>
+                {% endfor %}<hr/>
+            {% endblock %}
+                <div class="panel-heading">
+                    <h3 class="panel-title">Bienvenue sur mon site !</h3>
+                </div>
+                {% for a in articles %}
+                    <section class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <hr/>
+                                <h2>{{ a.titre }}</h2>
+                                <hr/>
+                                <p>{{ a.texte }}</p>
+                                <p>{{ a.temps|date("Y-m-d H:i:s") }} </p>
+                            </div>
+                        </div>
+                    </section>
+                {% endfor %}
+                    </div>
+                    </div>
+            {% endblock %}
 
-{% block body %}
-    {% block menu %}
-        {% for s in sections %}
-            <a href="{{ path("sections",{ 'id': s.id }) }}">{{ s.titre }}</a> -
-        {% endfor %}<hr/>
-    {% endblock %}
-    <h1>{{ titre }}</h1>
-    {% for a in articles %}
-        <hr/>
-        <h2>{{ a.titre }}</h2>
-        <hr/>
-        <h4>
-        <p>{{ a.texte }}</p>
-        <p>{{ a.temps|date("Y-m-d H:i:s") }} </p>
-    {% endfor %}
-{% endblock %}

@@ -37,7 +37,7 @@ class DefaultController extends Controller
             ->where('g.id = :idactu')
             ->setParameter('idactu', $id)
             ->getQuery()->getResult();
-        dump($articles);
+        //dump($articles);
         // menu
         $sections = $em->getRepository('AppBundle:Section')->findAll();
         return $this->render('default/section.html.twig', array(
